@@ -1,12 +1,12 @@
-﻿///first, a little introduction might be neccessary!
-///welcome to a new age of malware.
-///one where AV software can't pick out the latest tweaks of malware
-///one where the malware is open source and always chainging, improving, evading
-///one where AnonWare is only the begining.
-///you can stop anonware. but you can't stop what's to come.
-///Expect Us. Expect the Future.
-///~AnonDev
-///PS: this is just a framework; not supposed to be a full-fledged virus ^_^ add your own code onto this and send the result to opendev@hushmail.com kthx
+﻿/*  Welcome to a New age of malware...
+ *
+ *  One where AV software can't pick out the latest strain of malware,
+ *  one where it is open source and always changing-improving-evading.
+ *  An age in which this is only the begining. You can try to stop
+ *  AnonWare, but you can't stop what's to come.
+ *  We Do Not Forgive. We Do Not Forget.
+ *  Expect US.
+ */
 
 
 using System;
