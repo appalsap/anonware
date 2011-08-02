@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AnonWare_CSharp.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="filename" Type="System.String" Scope="User">
-      <Value Profile="(Default)">forreproduction</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>
