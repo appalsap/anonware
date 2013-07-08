@@ -1,6 +1,0 @@
-C:\Users\Matthew Sotoudeh\anonware\AnonWare CSharp\Crypt0n\bin\Debug\Crypt0n.exe
-C:\Users\Matthew Sotoudeh\anonware\AnonWare CSharp\Crypt0n\bin\Debug\Crypt0n.pdb
-C:\Users\Matthew Sotoudeh\anonware\AnonWare CSharp\Crypt0n\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Matthew Sotoudeh\anonware\AnonWare CSharp\Crypt0n\obj\x86\Debug\Crypt0n.exe
-C:\Users\Matthew Sotoudeh\anonware\AnonWare CSharp\Crypt0n\obj\x86\Debug\Crypt0n.pdb
-C:\Users\Matthew Sotoudeh\anonware\AnonWare CSharp\Crypt0n\bin\Debug\Crypt0n.exe.config
